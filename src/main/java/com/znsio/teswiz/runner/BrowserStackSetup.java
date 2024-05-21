@@ -214,8 +214,12 @@ class BrowserStackSetup {
                 "curl --insecure " + Setup.getCurlProxyCommand() + " -u \"" + authenticationKey + "\"",
                 "-X POST \"" + uploadUrl + "upload\"",
                 "-F \"file=@" + appPath + "\"", "-F \"custom_id=" + getAppName(appPath) + "\""};
+
+        System.out.println("browserstack cmd" + curlCommand);
+
         CommandLineResponse uploadAPKToBrowserStackResponse = CommandLineExecutor.execCommand(
                 curlCommand);
+
 
         JsonObject uploadResponse = JsonFile.convertToMap(
                 uploadAPKToBrowserStackResponse.getStdOut()).getAsJsonObject();
