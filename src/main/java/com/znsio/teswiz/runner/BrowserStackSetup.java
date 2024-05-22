@@ -215,11 +215,11 @@ class BrowserStackSetup {
                 "-X POST \"" + uploadUrl + "upload\"",
                 "-F \"file=@" + appPath + "\"", "-F \"custom_id=" + getAppName(appPath) + "\""};
 
-        System.out.println("browserstack cmd: " + curlCommand);
+        System.out.println("browserstack cmd: " + Arrays.toString(curlCommand));
 
         CommandLineResponse uploadAPKToBrowserStackResponse = CommandLineExecutor.execCommand(
                 curlCommand);
-        System.out.println("browserstack updload app response: " + curlCommand);
+        System.out.println("browserstack updload app response: " + String.valueOf(uploadAPKToBrowserStackResponse));
 
         JsonObject uploadResponse = JsonFile.convertToMap(
                 uploadAPKToBrowserStackResponse.getStdOut()).getAsJsonObject();
